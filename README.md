@@ -105,3 +105,11 @@ The list of recipes should be loaded via HTTP request using this link - [recipes
 - Recipes in the list are presented as cards with image, name and headline. The recipe name should be in bold with text size 16sp.
 - If an error occurred, you should show a snackbar with a short description of the issue.
 
+### Task1 Decision
+- Provide factories to the managers (SelectionManager and TagManager) and SubscriptionLimitValidatorFactory to hide the complexity of object creation and aid in dependency injection.
+- Design to interfaces, not implementations, to facilitate testing and apply the principle of "Open for Extension, Closed for Modification" in SOLID.
+- Ensure that SelectionManager provides single responsibilities for the selection logic and adheres to the Single Responsibility Principle in SOLID.
+- Ensure that SubscriptionValidator provides single responsibility for determining the number of selected recipes based on the subscription. Also, implement this by designing interfaces to apply the Inversion of Dependency principle in SOLID.
+- Ensure that TagManager provides single responsibility for filtering recipes with specific tags.
+- Enable dependency injection in SelectionManager and Menu to facilitate unit testing.
+- Apply the Facade design pattern by providing the Menu class to hide the complexities of the system and offer an interface to the client.
