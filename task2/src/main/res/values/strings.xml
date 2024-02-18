@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Hellofresh test</string>
+    <string name="msg_connection_error">Please check your connection</string>
+    <string name="msg_unknown_error">Unknown Error</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_retry">Retry</string>
+    <string name="msg_empty_movies_list">Sorry, no recipes available currently</string>
+    <string name="title_reload">Reload</string>
+    <string name="title_recipe">Recipe</string>
 </resources>
