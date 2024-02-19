@@ -105,11 +105,32 @@ The list of recipes should be loaded via HTTP request using this link - [recipes
 - Recipes in the list are presented as cards with image, name and headline. The recipe name should be in bold with text size 16sp.
 - If an error occurred, you should show a snackbar with a short description of the issue.
 
-### Task1 Decision
+### Task1
+##### Managers
+- SelectionManager is a manger to to select/unselect recipes.
+- Tag Manager is a manager to filter the filter recipes by tag.
+##### Models
+- Recipe is a model that demonstrate the recipe fields.
+- Subscription is a model that demonstrate the subscription fields.
+##### Validators
+- SubscriptionLimitValidation is a validator that validate the number of selected based on the subscription.
+##### System Interface
+- Menus is the system interface that hide the system complexity though it's simple functions.
+##### Decisions
 - Provide factories to the managers (SelectionManager and TagManager) and SubscriptionLimitValidatorFactory to hide the complexity of object creation and aid in dependency injection.
-- Design to interfaces, not implementations, to facilitate testing and apply the principle of "Open for Extension, Closed for Modification" in SOLID.
+- Design to interfaces, not implementations, to facilitate testing and apply the principle of "Open for Extension, Closed for Modification" and "Inversion Dependency" in SOLID.
 - Ensure that SelectionManager provides single responsibilities for the selection logic and adheres to the Single Responsibility Principle in SOLID.
 - Ensure that SubscriptionValidator provides single responsibility for determining the number of selected recipes based on the subscription. Also, implement this by designing interfaces to apply the Inversion of Dependency principle in SOLID.
 - Ensure that TagManager provides single responsibility for filtering recipes with specific tags.
 - Enable dependency injection in SelectionManager and Menu to facilitate unit testing.
 - Apply the Facade design pattern by providing the Menu class to hide the complexities of the system and offer an interface to the client.
+- Create unit tests and integration test to the system classes/components.
+
+### Task2
+A MVVM clean architecture example that showing the list of recipes.
+
+##### Decisions
+- Apply MVVM as architecture pattern in the presentation layer.
+- Apply clean architecture and separate the app between different 3 layers to have a clean separated code.
+- Apply dependency injection through the whole app that allowing typing unit testing easily and so on.
+- Apply single source of truth and avoid multi state for showing loading, success and error by provide AsyncState class.
