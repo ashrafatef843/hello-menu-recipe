@@ -4,7 +4,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.hellofresh.task2.BuildConfig
-import com.hellofresh.task2.data.api.RecipesApi
+import com.hellofresh.task2.recipes.data.api.RecipesApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 object NetworkFactory {
 
     private const val TIMEOUT = 30L
-    private const val BASE_URL = "https://my-json-server.typicode.com/"
+    private const val BASE_URL = "https://hf-android-app.s3-eu-west-1.amazonaws.com/android-test/"
 
     private fun providesOkHttp(): OkHttpClient = OkHttpClient.Builder().apply {
         if (BuildConfig.DEBUG) {

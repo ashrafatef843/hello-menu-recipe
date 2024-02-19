@@ -5,9 +5,9 @@ import android.widget.Toast
 import com.hellofresh.task2.R
 import com.hellofresh.task2.base.data.erros.ConnectionException
 
-fun Context.handleError(e: Exception) {
-    if (e is ConnectionException)
-        Toast.makeText(this, getString(R.string.msg_connection_error), Toast.LENGTH_LONG).show()
+fun Context.handleError(e: Exception): String {
+   return if (e is ConnectionException)
+        getString(R.string.msg_connection_error)
     else
-        Toast.makeText(this, getString(R.string.msg_unknown_error), Toast.LENGTH_SHORT).show()
+        getString(R.string.msg_unknown_error)
 }

@@ -1,5 +1,6 @@
 package com.hellofresh.task2.recipes.presentation
 
+import android.graphics.Typeface
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,6 +33,7 @@ import com.hellofresh.task2.base.presentation.Fail
 import com.hellofresh.task2.base.presentation.Loading
 import com.hellofresh.task2.base.presentation.RetryItem
 import com.hellofresh.task2.base.presentation.Success
+import com.hellofresh.task2.base.presentation.Utilities
 import com.hellofresh.task2.recipes.presentation.theme.ui.HellofreshTestTheme
 
 
@@ -40,44 +43,63 @@ fun RecipesScreen(
 ) {
     val recipes = recipesViewModel.recipes
 
-    Box(Modifier.fillMaxSize()) {
-        LazyColumn(
-            modifier = if (recipes().isNullOrEmpty())
-                Modifier
-                    .wrapContentSize()
-                    .align(Alignment.Center)
-            else
-                Modifier.fillMaxSize()
+    Box(
+        Modifier
+            .fillMaxSize()
+            .padding(vertical = 10.dp)
+    ) {
+        Box(
+            Modifier.fillMaxSize(),
+            contentAlignment = Alignment.BottomCenter
         ) {
-            when (recipes) {
-                is Loading -> item { CircularLoading() }
+            LazyColumn(
+                modifier = if (recipes is Loading)
+                    Modifier
+                        .wrapContentSize()
+                        .align(Alignment.Center)
+                else
+                    Modifier.fillMaxSize()
+            ) {
+                when (recipes) {
+                    is Loading -> item { CircularLoading() }
 
-                is Success -> {
-                    if (recipes().isEmpty())
-                        item {
-                            EmptyRecipeItem(recipesViewModel)
-                        }
-                    else
-                        items(recipes().size) {
-                            RecipeItem(recipe = recipes()[it])
-                        }
-                }
-
-                is Fail -> {
-                    item {
-                        RetryItem(recipes.error) {
-                            loadMore(recipesViewModel)
+                    is Success -> {
+                        if (recipes().isEmpty())
+                            item {
+                                EmptyRecipeItem(recipesViewModel)
+                            }
+                        else {
+                            item {
+                                DateItem()
+                            }
+                            items(recipes().size) {
+                                RecipeItem(recipe = recipes()[it])
+                            }
                         }
                     }
-                }
 
-                else -> {
-                    // do nothing
+                    else -> {
+                        // do nothing
+                    }
                 }
             }
-        }
+            if (recipes is Fail)
+                RetryItem(recipes.error) {
+                    loadMore(recipesViewModel)
+                }
 
+        }
     }
+}
+
+@Composable
+fun DateItem() {
+    Text(
+        text = Utilities.getCurrentDate(),
+        fontSize = 18.sp,
+        color = Color.Black,
+        modifier = Modifier.padding(10.dp)
+    )
 }
 
 @Composable
@@ -89,7 +111,9 @@ fun RecipeItem(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp
         ),
-        modifier = Modifier.padding(16.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
@@ -110,10 +134,11 @@ fun RecipeItem(
             Spacer(modifier = Modifier.height(15.dp))
             Text(
                 text = recipe.name,
-                fontSize = 20.sp,
-                color = Color.Black
+                fontSize = 16.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
             )
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Text(recipe.headline)
         }
     }
