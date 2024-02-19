@@ -1,6 +1,5 @@
 package com.hellofresh.task2.recipes.presentation
 
-import android.graphics.Typeface
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

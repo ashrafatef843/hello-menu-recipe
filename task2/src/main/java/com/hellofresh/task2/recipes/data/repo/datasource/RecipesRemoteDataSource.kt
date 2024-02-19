@@ -4,8 +4,8 @@ import com.hellofresh.task2.base.CoroutineDispatchers
 import com.hellofresh.task2.base.coroutineDispatcher
 import com.hellofresh.task2.base.data.erros.handleHttpException
 import com.hellofresh.task2.recipes.data.api.RecipesApi
-import com.hellofresh.task2.data.di.RecipesApiFactory
-import com.hellofresh.task2.data.entity.RecipeEntity
+import com.hellofresh.task2.recipes.data.di.RecipesApiFactory
+import com.hellofresh.task2.recipes.data.entity.RecipeEntity
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 

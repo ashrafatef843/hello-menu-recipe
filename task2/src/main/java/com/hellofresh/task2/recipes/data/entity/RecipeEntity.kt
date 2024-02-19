@@ -1,4 +1,4 @@
-package com.hellofresh.task2.data.entity
+package com.hellofresh.task2.recipes.data.entity
 
 class RecipeEntity(
     val id: String,

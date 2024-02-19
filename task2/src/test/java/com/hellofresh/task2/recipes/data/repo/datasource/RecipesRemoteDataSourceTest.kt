@@ -3,7 +3,7 @@ package com.hellofresh.task2.recipes.data.repo.datasource
 import com.hellofresh.task2.base.TestCoroutineDispatcher
 import com.hellofresh.task2.base.data.erros.ConnectionException
 import com.hellofresh.task2.recipes.data.api.RecipesApi
-import com.hellofresh.task2.data.entity.RecipeEntity
+import com.hellofresh.task2.recipes.data.entity.RecipeEntity
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK

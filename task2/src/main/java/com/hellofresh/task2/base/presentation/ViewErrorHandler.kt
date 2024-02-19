@@ -1,7 +1,6 @@
 package com.hellofresh.task2.base.presentation
 
 import android.content.Context
-import android.widget.Toast
 import com.hellofresh.task2.R
 import com.hellofresh.task2.base.data.erros.ConnectionException
 

@@ -2,7 +2,7 @@ package com.hellofresh.task2.recipes.data.repo
 
 import com.hellofresh.task2.base.TestCoroutineDispatcher
 import com.hellofresh.task2.base.data.erros.ConnectionException
-import com.hellofresh.task2.data.entity.RecipeEntity
+import com.hellofresh.task2.recipes.data.entity.RecipeEntity
 import com.hellofresh.task2.recipes.data.repo.datasource.RecipesRemoteDataSource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -11,7 +11,6 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-
 
 class RecipesRepositoryImplTest {
 

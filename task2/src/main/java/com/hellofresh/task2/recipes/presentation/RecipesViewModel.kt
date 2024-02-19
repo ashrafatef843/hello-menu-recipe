@@ -12,7 +12,6 @@ import com.hellofresh.task2.base.presentation.Fail
 import com.hellofresh.task2.base.presentation.Loading
 import com.hellofresh.task2.base.presentation.Success
 import com.hellofresh.task2.base.presentation.Uninitialized
-import com.hellofresh.task2.recipes.data.repo.RecipesRepositoryImpl
 import com.hellofresh.task2.recipes.domain.usecase.FetchingRecipes
 import com.hellofresh.task2.recipes.presentation.mapper.RecipeViewMapper
 import kotlinx.coroutines.launch
