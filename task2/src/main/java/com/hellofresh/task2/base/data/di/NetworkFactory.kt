@@ -15,7 +15,9 @@ object NetworkFactory {
 
     private const val TIMEOUT = 30L
     private const val BASE_URL = "https://hf-android-app.s3-eu-west-1.amazonaws.com/android-test/"
-
+    val retrofit: Retrofit by lazy {
+        providesRetrofit()
+    }
     private fun providesOkHttp(): OkHttpClient = OkHttpClient.Builder().apply {
         if (BuildConfig.DEBUG) {
             addInterceptor(HttpLoggingInterceptor().apply {
@@ -39,7 +41,4 @@ object NetworkFactory {
             GsonConverterFactory.create(provideGson())
         )
     }.build()
-
-    fun providesRecipesApi(): RecipesApi =
-        providesRetrofit().create(RecipesApi::class.java)
 }
