@@ -5,8 +5,8 @@ import com.hellofresh.task1.model.Subscription
 import com.hellofresh.task1.validator.SubscriptionLimitValidator
 
 interface SelectionManager {
-    fun selectRecipe(subscription: Subscription, recipe: Recipe)
-    fun unselectRecipe(recipe: Recipe)
+    fun selectRecipe(subscription: Subscription, vararg recipes: Recipe)
+    fun unselectRecipe(vararg recipes: Recipe)
     fun getSelectedRecipeCount(): Int
     fun getSelectedRecipes(): List<Recipe>
 }
@@ -15,7 +15,7 @@ class DefaultSelectionManager(
     private val subscriptionLimitValidator: SubscriptionLimitValidator
 ) : SelectionManager {
     private val selectedRecipes = mutableListOf<Recipe>()
-    override fun selectRecipe(subscription: Subscription, recipe: Recipe) {
+    override fun selectRecipe(subscription: Subscription, vararg recipes: Recipe) {
         if (!subscriptionLimitValidator.isSelectionAllowed(
                 selectedRecipes.size, subscription)
             ) {
@@ -25,11 +25,15 @@ class DefaultSelectionManager(
                 } recipes."
             )
         }
-        selectedRecipes.add(recipe)
+        recipes.forEach {
+            selectedRecipes.add(it)
+        }
     }
 
-    override fun unselectRecipe(recipe: Recipe) {
-        selectedRecipes.remove(recipe)
+    override fun unselectRecipe(vararg recipes: Recipe) {
+        recipes.forEach {
+            selectedRecipes.remove(it)
+        }
     }
 
     override fun getSelectedRecipeCount(): Int {
